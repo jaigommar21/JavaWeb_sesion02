@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="ISO-8859-1">
+<title>Insert title here</title>
+</head>
+<script>
+	function validar() {
+		var n = document.f1.txtUsuario.value;
+	
+		alert(n);	
+		
+		if (n == "") {
+			alert('Ingrese Usuario');
+			return false;
+		}
+		return true;
+	}
+</script>
+
+</head>
+
+<body>
+	<form action="ope" method="get" onsubmit="return validar()" name="f1">
+		<h3>Operaciones</h3>
+		Operador 1: <input type="text" name="txtOpe1" /> <br />
+		Operador 2: <input type="text" name="txtOpe2" /> <br /> 
+		Operacion: <select name="txtTipoOpe" > 
+						<option value="01">Suma</option>
+						<option value="02">Rest</option>
+						<option value="03">Multiplicación</option>
+						<option value="04">División</option>
+					</select>
+				<br /> 
+		
+		<input
+			type="submit" value="Realizar Operacion" />
+	</form>
+</body>
+
+</html>

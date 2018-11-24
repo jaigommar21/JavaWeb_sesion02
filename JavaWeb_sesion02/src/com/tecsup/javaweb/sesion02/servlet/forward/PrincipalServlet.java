@@ -1,0 +1,62 @@
+package com.tecsup.javaweb.sesion02.servlet.forward;
+
+import java.io.IOException;
+
+import javax.servlet.RequestDispatcher;
+import javax.servlet.ServletException;
+import javax.servlet.annotation.WebServlet;
+import javax.servlet.http.HttpServlet;
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+
+/**
+ * Servlet implementation class PrincipalServlet
+ */
+@WebServlet("/PrincipalServlet")
+public class PrincipalServlet extends HttpServlet {
+	private static final long serialVersionUID = 1L;
+       
+    /**
+     * @see HttpServlet#HttpServlet()
+     */
+    public PrincipalServlet() {
+        super();
+        // TODO Auto-generated constructor stub
+    }
+
+	/**
+	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
+	 */
+	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		// TODO Auto-generated method stub
+		
+		RequestDispatcher rd = request.getRequestDispatcher("/error.html");
+
+		String destino = request.getParameter("destino");
+		
+		if (destino != null) {
+
+			destino =  destino.toUpperCase();
+			
+			if("HTML".equals(destino))
+				
+				rd = request.getRequestDispatcher("/salida.html");
+			
+			else if ("SERVLET".equals(destino)) 
+				
+				rd = request.getRequestDispatcher("SecundarioServlet");
+		} 
+		
+		rd.forward(request, response);
+	
+	}
+
+	/**
+	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
+	 */
+	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		// TODO Auto-generated method stub
+		doGet(request, response);
+	}
+
+}
